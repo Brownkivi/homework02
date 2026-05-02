@@ -9,7 +9,9 @@ func main() {
 	//testModifyInt()
 	//testModifySlice()
 	//testPrintNum()
-	testScheduler()
+	//testScheduler()
+	//testShape()
+	testPerson()
 }
 
 func testModifyInt() {
@@ -49,4 +51,24 @@ func testScheduler2() {
 	}
 	logic.Scheduler2(tasks)
 
+}
+
+func testShape() {
+	fmt.Println("Testing Shape...")
+	circle := logic.Circle{Radius: 5}
+	rectangle := logic.Rectangle{Rength: 4, Width: 6}
+	fmt.Printf("Circle Area: %.2f\n", circle.Area(circle.Radius, 0)) // Output: Circle Area: 78.50
+	fmt.Printf("Circle Perimeter: %.2f\n", circle.Perimeter(circle.Radius, 0))
+	fmt.Printf("Rectangle Area: %.2f\n", rectangle.Area(rectangle.Rength, rectangle.Width)) // Output: Rectangle Area: 24.00
+	fmt.Printf("Rectangle Perimeter: %.2f\n", rectangle.Perimeter(rectangle.Rength, rectangle.Width))
+
+}
+
+func testPerson() {
+	fmt.Println("Testing Person...")
+	employee := logic.Employee{
+		Person:     logic.Person{Name: "Alice", Age: 30},
+		EmployeeID: 12345,
+	}
+	employee.PrintInfo()
 }
