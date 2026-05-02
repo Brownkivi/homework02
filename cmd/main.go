@@ -15,7 +15,9 @@ func main() {
 	//testShape()
 	//testPerson()
 	//testChannel()
-	testBufferChannel()
+	//testBufferChannel()
+	//logic.MuteLock()
+	logic.LockFree()
 }
 
 func testModifyInt() {
