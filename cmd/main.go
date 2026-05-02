@@ -3,6 +3,8 @@ package main
 import (
 	"fmt"
 	"homework02/logic"
+	"sync"
+	"time"
 )
 
 func main() {
@@ -11,7 +13,9 @@ func main() {
 	//testPrintNum()
 	//testScheduler()
 	//testShape()
-	testPerson()
+	//testPerson()
+	//testChannel()
+	testBufferChannel()
 }
 
 func testModifyInt() {
@@ -71,4 +75,26 @@ func testPerson() {
 		EmployeeID: 12345,
 	}
 	employee.PrintInfo()
+}
+
+func testChannel() {
+	fmt.Println("Testing Channel...")
+	ch := make(chan int)
+
+	// Wait for the receiver to start
+	go logic.Send(ch)
+	go logic.Receive(ch)
+	time.Sleep(5 * 1000)
+
+	// Wait for a moment to allow goroutines to finish
+}
+
+func testBufferChannel() {
+	fmt.Println("Testing Buffer Channel...")
+	ch := make(chan int, 10)
+	wg := &sync.WaitGroup{}
+	wg.Add(2)
+	go logic.Send1(ch, wg)
+	go logic.Receive1(ch, wg)
+	wg.Wait()
 }
